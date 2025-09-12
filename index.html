@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Luis Gonzalez — CS Portfolio</title>
+  <meta name="description" content="Computer Science student portfolio: projects, skills, resume, and contact." />
+  <meta name="color-scheme" content="light dark">
+  <style>
+    :root {
+      --bg: #0b0e14;
+      --card: #121826;
+      --text: #e6e6e6;
+      --muted: #9aa4b2;
+      --accent: #7c93ff;
+      --ring: rgba(124,147,255,.35);
+      --shadow: rgba(0,0,0,.35);
+      --light-bg: #f7f8fb;
+      --light-card: #ffffff;
+      --light-text: #0f172a;
+      --light-muted: #475569;
+      --light-accent: #3b82f6;
+      --light-ring: rgba(59,130,246,.25);
+      --radius: 18px;
+    }
+    @media (prefers-color-scheme: light) {
+      :root { --bg: var(--light-bg); --card: var(--light-card); --text: var(--light-text); --muted: var(--light-muted); --accent: var(--light-accent); --ring: var(--light-ring); }
+    }
+    html, body { height: 100%; }
+    body {
+      margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Helvetica, Arial, sans-serif;
+      background: radial-gradient(1200px 600px at 20% -10%, #2b3150 0%, transparent 60%),
+                  radial-gradient(800px 400px at 120% -10%, #2b3150 0%, transparent 60%), var(--bg);
+      color: var(--text);
+    }
+    .container { max-width: 1050px; margin: 0 auto; padding: 28px 20px 80px; }
+    header { position: sticky; top: 0; backdrop-filter: blur(8px); background: color-mix(in oklab, var(--bg), transparent 75%); border-bottom: 1px solid color-mix(in oklab, var(--text), transparent 90%); z-index: 20; }
+    .nav { display: flex; align-items: center; gap: 18px; padding: 12px 20px; max-width: 1050px; margin: 0 auto; }
+    .brand { font-weight: 700; letter-spacing: .3px; }
+    .spacer { flex: 1; }
+    .nav a { color: var(--text); text-decoration: none; opacity: .85; padding: 8px 10px; border-radius: 10px; }
+    .nav a:hover { background: color-mix(in oklab, var(--text), transparent 94%); opacity: 1; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 14px; border-radius: 12px; border: 1px solid color-mix(in oklab, var(--accent), transparent 55%); background: color-mix(in oklab, var(--accent), transparent 90%); color: var(--text); text-decoration: none; box-shadow: 0 10px 20px var(--shadow); }
+    .btn:hover { box-shadow: 0 14px 28px var(--shadow); }
+
+    .hero { display: grid; grid-template-columns: 1.2fr .8fr; gap: 24px; padding: 48px 0 12px; align-items: center; }
+    @media (max-width: 860px) { .hero { grid-template-columns: 1fr; } }
+    .card { background: linear-gradient(180deg, color-mix(in oklab, var(--card), transparent 0%), color-mix(in oklab, var(--card), transparent 0%)); border: 1px solid color-mix(in oklab, var(--text), transparent 90%); border-radius: var(--radius); box-shadow: 0 10px 30px var(--shadow); }
+    .p-hero { padding: 28px; }
+    h1 { font-size: clamp(1.8rem, 3vw, 2.6rem); margin: 0 0 10px; }
+    .subtitle { color: var(--muted); margin: 0 0 18px; line-height: 1.6; }
+    .row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+    .tag { font-size: .85rem; color: var(--muted); border: 1px dashed color-mix(in oklab, var(--accent), transparent 45%); padding: 6px 10px; border-radius: 999px; }
+
+    .avatar { aspect-ratio: 1; border-radius: 18px; background: url('https://picsum.photos/600?grayscale') center/cover; min-height: 260px; border: 1px solid color-mix(in oklab, var(--text), transparent 90%); }
+
+    section { padding-top: 38px; }
+    h2 { font-size: clamp(1.4rem, 2.2vw, 1.8rem); margin: 0 0 14px; }
+
+    .grid { display: grid; gap: 16px; grid-template-columns: repeat(12, 1fr); }
+    .col-6 { grid-column: span 6; }
+    .col-4 { grid-column: span 4; }
+    @media (max-width: 860px) { .col-6, .col-4 { grid-column: span 12; } }
+
+    .project { padding: 18px; border-radius: var(--radius); border: 1px solid color-mix(in oklab, var(--text), transparent 90%); background: linear-gradient(180deg, color-mix(in oklab, var(--card), transparent 0%), color-mix(in oklab, var(--card), transparent 0%)); display: flex; gap: 16px; align-items: start; }
+    .project h3 { margin: 0 0 6px; font-size: 1.05rem; }
+    .project p { margin: 0 0 10px; color: var(--muted); }
+    .project small { color: var(--muted); }
+    .project .thumb { width: 88px; min-width: 88px; aspect-ratio: 4/3; border-radius: 12px; background: url('https://picsum.photos/400') center/cover; border: 1px solid color-mix(in oklab, var(--text), transparent 85%); }
+
+    .skills { display: grid; gap: 10px; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+    .skill { padding: 12px 14px; border: 1px solid color-mix(in oklab, var(--text), transparent 90%); border-radius: 12px; background: color-mix(in oklab, var(--card), transparent 0%); display: flex; align-items: center; justify-content: space-between; }
+
+    .footer { margin-top: 40px; padding: 24px; text-align: center; color: var(--muted); }
+    .visually-hidden { position: absolute !important; height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px); white-space: nowrap; }
+
+    .switch { border: 1px solid color-mix(in oklab, var(--text), transparent 88%); padding: 6px 10px; border-radius: 999px; cursor: pointer; }
+    .kbd { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: .85rem; border: 1px solid color-mix(in oklab, var(--text), transparent 85%); padding: 2px 6px; border-radius: 6px; }
+    a.inline { color: var(--accent); text-decoration: none; }
+    a.inline:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="nav">
+      <div class="brand">Luis Gonzalez</div>
+      <!--<a href="#projects">Projects</a>-->
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+      <div class="spacer"></div>
+      <button id="theme-toggle" class="switch" aria-pressed="false" aria-label="Toggle theme">🌗 Theme</button>
+      <a class="btn" href="Luis%20Gonzalez%202025%20Resume.pdf" target="_blank" rel="noopener">Download Résumé</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="card p-hero">
+        <h1>Hello, I’m <span class="inline" style="color:var(--accent)">Luis Gonzalez</span> — CS @ Brooklyn College</h1>
+        <p class="subtitle">I build fast, accessible web apps and love algorithms, data modeling, and systems design. I’m seeking a Fall/Spring <strong>Software Engineering / Data</strong> internship.</p>
+        <div class="row">
+          <a class="btn" href="#projects">See my projects →</a>
+          <a class="inline" href="mailto:lu.gonzalezxv@gmail.com">lu.gonzalezxv@gmail.com</a>
+          <span class="tag">Open to relocate</span>
+        </div>
+        <div class="tags" aria-label="core skills">
+          <span class="tag">Java • Python • SQL</span>
+          <span class="tag">React • Node</span>
+          <span class="tag">MySQL • Postgres</span>
+          <span class="tag">AWS • Git</span>
+        </div>
+      </div>
+      <img class="avatar" src="assetsPortfolio/15830016.jpg" alt="Luis Gonzalez portrait" width="600" height="600">
+    </section>
+
+    <section id="skills">
+      <h2>Skills</h2>
+      <div class="skills">
+        <div class="skill"><span>Languages</span><small>Java, Python, SQL, JS</small></div>
+        <div class="skill"><span>Frameworks</span><small>React, Node, Express</small></div>
+        <div class="skill"><span>Databases</span><small>MySQL, Postgres</small></div>
+        <div class="skill"><span>Cloud</span><small>AWS (EC2, RDS)</small></div>
+        <div class="skill"><span>Tools</span><small>Git, Docker, Linux</small></div>
+        <div class="skill"><span>Coursework</span><small>DS&A, DB Systems</small></div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="card p-hero">
+        <p class="subtitle">🚧 Projects are <strong>coming soon</strong>! Check back later for updates as I add personal, academic, and open‑source work.</p>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>Best way to reach me: <a class="inline" href="mailto:lu.gonzalezxv@gmail.com">lu.gonzalezxv@gmail.com</a>. I’m also on <a class="inline" href="https:www.linkedin.com/in/luis-gonzalez-148354272">LinkedIn</a> and <a class="inline" href="https://github.com/lu-syn" target="_blank" rel="noopener">GitHub</a>.</p>
+      <form class="card p-hero" onsubmit="event.preventDefault(); alert('Thanks! This demo form doesn\'t send email.');">
+        <label class="visually-hidden" for="msg">Message</label>
+        <textarea id="msg" rows="5" placeholder="Write me a short message…" style="width:100%; padding:12px; border-radius:12px; border:1px solid color-mix(in oklab, var(--text), transparent 85%); background: transparent; color: var(--text);"></textarea>
+        <div class="row" style="justify-content:end; margin-top:10px">
+          <button class="btn" type="submit">Send</button>
+        </div>
+      </form>
+    </section>
+
+    <footer class="footer">© <span id="year"></span> Luis Gonzalez. Built with vanilla HTML/CSS. <a class="inline" href="#top">Back to top</a></footer>
+  </main>
+
+  <script>
+    const y = document.getElementById('year'); if (y) y.textContent = new Date().getFullYear();
+    const toggle = document.getElementById('theme-toggle');
+    const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+    let mode = localStorage.getItem('mode') || (prefersLight ? 'light' : 'dark');
+    function apply(mode){
+      if(mode === 'light'){ document.documentElement.style.setProperty('--bg', getComputedStyle(document.documentElement).getPropertyValue('--light-bg'));
+        document.documentElement.style.setProperty('--card', getComputedStyle(document.documentElement).getPropertyValue('--light-card'));
+        document.documentElement.style.setProperty('--text', getComputedStyle(document.documentElement).getPropertyValue('--light-text'));
+        document.documentElement.style.setProperty('--muted', getComputedStyle(document.documentElement).getPropertyValue('--light-muted'));
+        document.documentElement.style.setProperty('--accent', getComputedStyle(document.documentElement).getPropertyValue('--light-accent'));
+        document.documentElement.style.setProperty('--ring', getComputedStyle(document.documentElement).getPropertyValue('--light-ring'));
+      } else { document.location.reload(); }
+      localStorage.setItem('mode', mode);
+    }
+    if(mode==='light') apply('light');
+    toggle?.addEventListener('click', ()=>{
+      mode = (mode==='light') ? 'dark' : 'light';
+      apply(mode);
+      toggle.setAttribute('aria-pressed', String(mode==='light'));
+    });
+  </script>
+</body>
+</html>
