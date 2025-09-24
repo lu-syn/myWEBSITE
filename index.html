@@ -41,7 +41,28 @@
     }
     .container { max-width: 1050px; margin: 0 auto; padding: 28px 20px 80px; }
     header { position: sticky; top: 0; backdrop-filter: blur(8px); background: color-mix(in oklab, var(--bg), transparent 75%); border-bottom: 1px solid color-mix(in oklab, var(--text), transparent 90%); z-index: 20; }
-    .nav { display: flex; align-items: center; gap: 18px; padding: 12px 20px; max-width: 1050px; margin: 0 auto; }
+    .nav {
+      display: flex;
+      justify-content: space-between; /* pushes left & right apart */
+      align-items: center;            /* vertically centers items */
+      gap: 18px;
+      padding: 1rem 2rem;             /* adds breathing room */
+      max-width: 1050px;
+      margin: 0 auto;
+      flex-wrap: wrap;                /* allow wrapping on small screens */
+    }
+    .nav { flex-wrap: wrap; }
+
+    @media (max-width: 768px) {
+      .nav { gap: 10px; padding: 10px 12px; }
+      .nav a { padding: 8px 6px; }
+      .nav .btn {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        padding: 10px 12px;
+      }
+    }
     .brand { font-weight: 700; letter-spacing: .3px; }
     .spacer { flex: 1; }
     .nav a { color: var(--text); text-decoration: none; opacity: .85; padding: 8px 10px; border-radius: 10px; }
@@ -59,20 +80,30 @@
     .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
     .tag { font-size: .85rem; color: var(--muted); border: 1px dashed color-mix(in oklab, var(--accent), transparent 45%); padding: 6px 10px; border-radius: 999px; }
 
-    .avatar{
+    .avatar {
       width: 100%;
-      max-width: 420px;      
-      aspect-ratio: 1 / 1;   
-      object-fit: cover;     
-      display: block;
+      max-width: 420px;
+      height: auto;          /* no squish */
+      object-fit: cover;
       border-radius: 18px;
       border: 1px solid color-mix(in oklab, var(--text), transparent 90%);
       box-shadow: 0 10px 30px var(--shadow);
+      display: block;
       justify-self: end;
     }
     @media (max-width: 860px){ .avatar{ justify-self: start; } }
 
-    section { padding-top: 38px; }
+    @media (max-width: 768px) {
+      body {
+        background:
+          radial-gradient(1100px 700px at 50% -250px, #2b3150 0%, transparent 70%),
+          linear-gradient(180deg, rgba(43,49,80,.25), transparent 15% 85%, rgba(0,0,0,.15)),
+          var(--bg);
+      }
+      .hero { padding-top: 24px; }
+    }
+
+  section { padding-top: 38px; scroll-margin-top: 80px; }
     h2 { font-size: clamp(1.4rem, 2.2vw, 1.8rem); margin: 0 0 14px; }
 
     .grid { display: grid; gap: 16px; grid-template-columns: repeat(12, 1fr); }
@@ -121,14 +152,16 @@
 </head>
 <body>
   <header>
-    <nav class="nav">
-      <div class="brand">Luis Gonzalez</div>
-      <!--<a href="#projects">Projects</a>-->
-      <a href="#skills">Skills</a>
-      <a href="#contact">Contact</a>
-      <div class="spacer"></div>
-      <button id="theme-toggle" class="switch" aria-pressed="false" aria-label="Toggle theme">🌗 Theme</button>
-      <a class="btn" href="Luis%20Gonzalez%202025%20Resume.pdf" target="_blank" rel="noopener">Download Résumé</a>
+    <nav class="nav" aria-label="Main navigation">
+      <div class="nav-left">
+        <a href="#">Luis Gonzalez</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="nav-right">
+        <button id="theme-toggle" class="switch" aria-pressed="false" aria-label="Toggle theme">🌗 Theme</button>
+        <a class="btn" href="Luis%20Gonzalez%202025%20Resume.pdf" target="_blank" rel="noopener">Download Résumé</a>
+      </div>
     </nav>
   </header>
 
