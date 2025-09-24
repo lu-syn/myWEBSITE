@@ -62,11 +62,43 @@
         justify-content: center;
         padding: 10px 12px;
       }
+      /* Navbar spacing fix for mobile */
+      nav {
+        display: flex;
+        flex-direction: column; /* stack items vertically */
+        align-items: center;
+        gap: 0.75rem; /* adds space between buttons/links */
+      }
+
+      nav a, nav button {
+        margin: 0.25rem 0;
+      }
+
+      #theme-toggle {
+        margin-bottom: 0.5rem; /* pushes it away from the next bar */
+      }
     }
     .brand { font-weight: 700; letter-spacing: .3px; }
     .spacer { flex: 1; }
     .nav a { color: var(--text); text-decoration: none; opacity: .85; padding: 8px 10px; border-radius: 10px; }
     .nav a:hover { background: color-mix(in oklab, var(--text), transparent 94%); opacity: 1; }
+
+    nav a, nav button, nav .btn {
+      border: none;
+      background: none;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      transition: background 0.2s;
+      width: auto;
+    }
+
+    nav a:hover, nav button:hover, nav .btn:hover {
+      background: rgba(255, 255, 255, 0.1); /* subtle hover */
+    }
+    #theme-toggle {
+      margin-right: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
     .btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 14px; border-radius: 12px; border: 1px solid color-mix(in oklab, var(--accent), transparent 55%); background: color-mix(in oklab, var(--accent), transparent 90%); color: var(--text); text-decoration: none; box-shadow: 0 10px 20px var(--shadow); }
     .btn:hover { box-shadow: 0 14px 28px var(--shadow); }
 
@@ -101,6 +133,12 @@
           var(--bg);
       }
       .hero { padding-top: 24px; }
+      
+      .btn[href*="resume"] {
+        display: inline-block;
+        width: auto;
+        margin: 0.25rem auto;
+      }
     }
 
   section { padding-top: 38px; scroll-margin-top: 80px; }
