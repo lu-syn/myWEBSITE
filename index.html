@@ -41,81 +41,66 @@
     }
     .container { max-width: 1050px; margin: 0 auto; padding: 28px 20px 80px; }
     header { position: sticky; top: 0; backdrop-filter: blur(8px); background: color-mix(in oklab, var(--bg), transparent 75%); border-bottom: 1px solid color-mix(in oklab, var(--text), transparent 90%); z-index: 20; }
-    /* --- NAVBAR RESET/STABILIZE ---------------------------------- */
-
-    /* Keep the header nav in one tidy row on desktop */
-    .nav{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:16px;
-      max-width:1050px;
-      margin:0 auto;
-      padding:12px 20px;
+    .nav {
+      display: flex;
+      justify-content: space-between; /* pushes left & right apart */
+      align-items: center;            /* vertically centers items */
+      gap: 18px;
+      padding: 1rem 2rem;             /* adds breathing room */
+      max-width: 1050px;
+      margin: 0 auto;
+      flex-wrap: wrap;                /* allow wrapping on small screens */
     }
+    .nav { flex-wrap: wrap; }
 
-    /* Make links/buttons in the nav look consistent */
-    .nav a, .nav button, .nav .btn{
-      line-height:1;
-      padding:8px 12px;
-      border-radius:12px;
-      border:1px solid color-mix(in oklab, var(--text), transparent 92%);
-      background: transparent;
-      box-shadow:none;
-      width:auto;               /* prevent full-width stretch */
-    }
-
-    /* Subtle hover so nothing looks “thick” */
-    .nav a:hover, .nav button:hover, .nav .btn:hover{
-      background: color-mix(in oklab, var(--text), transparent 94%);
-    }
-
-    /* Give the sticky header room so anchor jumps don't hide content */
-    section{ scroll-margin-top: 84px; }
-
-    /* ---------- Mobile layout: two neat rows, centered ------------ */
-    @media (max-width: 768px){
-      .nav{
-        flex-wrap:wrap;
-        justify-content:center;
-        gap:8px 12px;           /* space between pills */
-        padding:10px 12px;
+    @media (max-width: 768px) {
+      .nav { gap: 10px; padding: 10px 12px; }
+      .nav a { padding: 8px 6px; }
+      .nav .btn {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        padding: 10px 12px;
+      }
+      /* Navbar spacing fix for mobile */
+      nav {
+        display: flex;
+        flex-direction: column; /* stack items vertically */
+        align-items: center;
+        gap: 0.75rem; /* adds space between buttons/links */
       }
 
-      /* Hide the spacer so items can center */
-      .nav .spacer{ display:none; }
+      nav a, nav button {
+        margin: 0.25rem 0;
+      }
 
-      /* Order: left links first row, actions second row */
-      .nav .brand{ order:0; }
-      .nav a[href^="#"]{ order:1; }     /* Skills, Contact */
-      #theme-toggle{ order:2; }
-      .nav .btn{ order:2; }             /* Download Résumé */
-
-      /* Tighten buttons so they don't bump into the next section */
-      #theme-toggle{ margin-bottom:4px; }
-    }
-
-    /* --- HERO IMAGE (keep proportions; no squish) ---------------- */
-    .avatar{
-      width:100%;
-      max-width:420px;
-      height:auto;
-      object-fit:cover;
-      border-radius:18px;
-      border:1px solid color-mix(in oklab, var(--text), transparent 90%);
-      box-shadow:0 10px 30px var(--shadow);
-      display:block;
-    }
-
-    /* --- MOBILE BACKGROUND: soften the gradient band ------------- */
-    @media (max-width: 768px){
-      body{
-        background:
-          radial-gradient(1200px 800px at 50% -260px, #2b3150 0%, transparent 72%),
-          linear-gradient(180deg, rgba(43,49,80,.18), transparent 12% 88%, rgba(0,0,0,.12)),
-          var(--bg);
+      #theme-toggle {
+        margin-bottom: 0.5rem; /* pushes it away from the next bar */
       }
     }
+    .brand { font-weight: 700; letter-spacing: .3px; }
+    .spacer { flex: 1; }
+    .nav a { color: var(--text); text-decoration: none; opacity: .85; padding: 8px 10px; border-radius: 10px; }
+    .nav a:hover { background: color-mix(in oklab, var(--text), transparent 94%); opacity: 1; }
+
+    nav a, nav button, nav .btn {
+      border: none;
+      background: none;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      transition: background 0.2s;
+      width: auto;
+    }
+
+    nav a:hover, nav button:hover, nav .btn:hover {
+      background: rgba(255, 255, 255, 0.1); /* subtle hover */
+    }
+    #theme-toggle {
+      margin-right: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 14px; border-radius: 12px; border: 1px solid color-mix(in oklab, var(--accent), transparent 55%); background: color-mix(in oklab, var(--accent), transparent 90%); color: var(--text); text-decoration: none; box-shadow: 0 10px 20px var(--shadow); }
+    .btn:hover { box-shadow: 0 14px 28px var(--shadow); }
 
     .hero { display: grid; grid-template-columns: 1.2fr .8fr; gap: 24px; padding: 48px 0 12px; align-items: center; }
     @media (max-width: 860px) { .hero { grid-template-columns: 1fr; } }
