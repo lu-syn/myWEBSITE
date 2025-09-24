@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Luis Gonzalez — CS Portfolio</title>
   <link rel="icon" href="assetsPortfolio/favicon.png">
   <meta name="description" content="Computer Science student portfolio: projects, skills, resume, and contact." />
@@ -270,6 +270,85 @@
       #skills .skill small{ font-size: .95rem; line-height: 1.4; white-space: normal; }
 
       /* Hero image feels anchored; no squish */
+      .avatar{
+        width: 100%;
+        max-width: 420px;
+        height: auto;
+        object-fit: cover;
+        border: 1px solid rgba(255,255,255,.08);
+      }
+    }
+
+    /* ===== MOBILE-ONLY HARDENED STYLES ===== */
+    @media (max-width: 768px){
+
+      /* Kill the harsh gradient band on phones: use subtle bg */
+      body{
+        background: linear-gradient(180deg, rgba(20,24,36,.85), rgba(20,24,36,.6) 30%, var(--bg));
+      }
+
+      /* Header: respect the notch + keep a solid (no banding) top bar */
+      header{
+        padding-top: env(safe-area-inset-top);
+        background: rgba(12,16,24,.85);
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(255,255,255,.06);
+      }
+
+      /* Nav: two tidy rows, centered, consistent spacing */
+      .nav{
+        max-width: 100%;
+        padding: 10px 12px;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 8px 10px;
+      }
+      .nav .spacer{ display:none; }
+
+      /* Make all nav items look like small pills (lighter borders) */
+      .nav a, .nav button, .nav .btn{
+        padding: 8px 12px;
+        border-radius: 12px;
+        border: 1px solid rgba(255,255,255,.12);
+        background: rgba(255,255,255,.03);
+        box-shadow: none;
+        width: auto;            /* prevent full-width stretching */
+      }
+
+      /* Keep Theme from bumping into other items */
+      #theme-toggle{ margin-bottom: 2px; }
+
+      /* Ensure sections don't scroll under sticky header */
+      section{ scroll-margin-top: calc(72px + env(safe-area-inset-top)); }
+
+      /* Card borders softer on phones */
+      .card{
+        border: 1px solid rgba(255,255,255,.08);
+        background: rgba(20,24,36,.55);
+      }
+
+      /* Skills: compact 2-column layout only on mobile */
+      #skills .skills{
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0,1fr));
+        gap: 12px;
+      }
+      #skills .skill{
+        padding: 14px;
+        min-height: auto;
+        border: 1px solid rgba(255,255,255,.08);
+        background: rgba(20,24,36,.55);
+        border-radius: 14px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      #skills .skill span{ font-weight: 600; margin-bottom: 4px; }
+      #skills .skill small{ white-space: normal; line-height: 1.4; }
+
+      /* Hero image: never squish */
       .avatar{
         width: 100%;
         max-width: 420px;
