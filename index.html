@@ -211,6 +211,32 @@
   /* Tiny extra breathing room for the first section under the header */
   .hero{ padding-top: 6px; }
 }
+  /* --- fix sticky-header overlap + spacing on mobile --- */
+:root { --nav-h: 56px; }                /* default header height */
+header .nav { min-height: var(--nav-h); }
+
+/* make the header a bit more opaque + add a bottom divider */
+header{
+  background: color-mix(in oklab, var(--bg), transparent 60%);
+  box-shadow: 0 1px 0 color-mix(in oklab, var(--text), transparent 92%);
+}
+
+/* sections won't slide under the sticky header when linked or scrolled */
+:where(section, .hero){ scroll-margin-top: calc(var(--nav-h) + 12px); }
+
+/* phone tweaks */
+@media (max-width: 860px){
+  :root { --nav-h: 96px; }               /* header becomes ~2 rows tall */
+  header .nav{
+    flex-wrap: wrap;
+    row-gap: 8px;
+  }
+  .spacer{ display:none; }               /* let items wrap naturally */
+  .nav .btn{ width: 100%; justify-content: center; }  /* resume btn gets its own row */
+  /* extra breathing room under the header so it doesn't kiss the hero card */
+  .container{ padding-top: 48px; }
+}
+
 
   </style>
 </head>
