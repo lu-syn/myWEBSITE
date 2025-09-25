@@ -143,6 +143,18 @@
       min-width: 120px;
       padding: 10px 16px;
     }
+
+    /* Contact form fix: ensure form.card spans its container and textarea is full-width */
+    form.card {
+      width: 100%;              /* Let it span full width of container */
+      max-width: 100%;          /* Prevent shrinking */
+      box-sizing: border-box;   /* Include padding in total width */
+    }
+
+    form.card textarea {
+      width: 100%;              /* Force full width inside form */
+      resize: vertical;         /* Let user expand vertically if needed */
+    }
   </style>
 </head>
 <body>
