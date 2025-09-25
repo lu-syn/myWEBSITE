@@ -157,6 +157,30 @@
       width: 100%;              /* Force full width inside form */
       resize: vertical;         /* Let user expand vertically if needed */
     }
+    /* --- mobile-only: keep the 2nd nav row from touching the hero --- */
+  @media (max-width: 768px){
+    header{
+      padding-bottom: 10px;            /* grow the header box */
+      margin-bottom: 6px;               /* tiny gap before content */
+      background: rgba(12,16,24,.85);   /* solid-ish so pills don't look “floaty” */
+      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(8px);
+      z-index: 100;                      /* stay above content */
+    }
+
+    .nav{
+      flex-wrap: wrap;
+      gap: 10px 12px;                    /* consistent row spacing */
+    }
+
+  /* keep Theme + Resume on row 2 and sized nicely */
+  #theme-toggle,
+  .nav .btn{
+    order: 2;
+    width: calc(50% - 8px);
+    justify-content: center;
+  }
+}
   </style>
 </head>
 <body>
