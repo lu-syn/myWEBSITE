@@ -181,6 +181,37 @@
     justify-content: center;
   }
 }
+/* --- MOBILE: stop nav pills from visually overlaying the hero --- */
+@media (max-width: 768px){
+  /* Make the header background a bit more solid and give it room for row 2 */
+  header{
+    background: rgba(12,16,24,.92);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    padding-bottom: 14px;   /* space for Theme/Resume row */
+    margin-bottom: 10px;    /* small gap before content */
+    z-index: 100;
+  }
+
+  /* Keep the nav rows neat and full-width inside the header */
+  .nav{
+    flex-wrap: wrap;
+    gap: 10px 12px;
+    width: 100%;
+  }
+
+  /* Force Theme + Resume onto row 2 and center them */
+  #theme-toggle,
+  .nav .btn{
+    order: 2;
+    width: calc(50% - 8px);
+    justify-content: center;
+  }
+
+  /* Tiny extra breathing room for the first section under the header */
+  .hero{ padding-top: 6px; }
+}
+
   </style>
 </head>
 <body>
