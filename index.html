@@ -181,62 +181,6 @@
     justify-content: center;
   }
 }
-/* --- MOBILE: stop nav pills from visually overlaying the hero --- */
-@media (max-width: 768px){
-  /* Make the header background a bit more solid and give it room for row 2 */
-  header{
-    background: rgba(12,16,24,.92);
-    -webkit-backdrop-filter: blur(8px);
-    backdrop-filter: blur(8px);
-    padding-bottom: 14px;   /* space for Theme/Resume row */
-    margin-bottom: 10px;    /* small gap before content */
-    z-index: 100;
-  }
-
-  /* Keep the nav rows neat and full-width inside the header */
-  .nav{
-    flex-wrap: wrap;
-    gap: 10px 12px;
-    width: 100%;
-  }
-
-  /* Force Theme + Resume onto row 2 and center them */
-  #theme-toggle,
-  .nav .btn{
-    order: 2;
-    width: calc(50% - 8px);
-    justify-content: center;
-  }
-
-  /* Tiny extra breathing room for the first section under the header */
-  .hero{ padding-top: 6px; }
-}
-  /* --- fix sticky-header overlap + spacing on mobile --- */
-:root { --nav-h: 56px; }                /* default header height */
-header .nav { min-height: var(--nav-h); }
-
-/* make the header a bit more opaque + add a bottom divider */
-header{
-  background: color-mix(in oklab, var(--bg), transparent 60%);
-  box-shadow: 0 1px 0 color-mix(in oklab, var(--text), transparent 92%);
-}
-
-/* sections won't slide under the sticky header when linked or scrolled */
-:where(section, .hero){ scroll-margin-top: calc(var(--nav-h) + 12px); }
-
-/* phone tweaks */
-@media (max-width: 860px){
-  :root { --nav-h: 96px; }               /* header becomes ~2 rows tall */
-  header .nav{
-    flex-wrap: wrap;
-    row-gap: 8px;
-  }
-  .spacer{ display:none; }               /* let items wrap naturally */
-  .nav .btn{ width: 100%; justify-content: center; }  /* resume btn gets its own row */
-  /* extra breathing room under the header so it doesn't kiss the hero card */
-  .container{ padding-top: 48px; }
-}
-
 
   </style>
 </head>
