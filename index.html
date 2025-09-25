@@ -117,6 +117,32 @@
     .kbd { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: .85rem; border: 1px solid color-mix(in oklab, var(--text), transparent 85%); padding: 2px 6px; border-radius: 6px; }
     a.inline { color: var(--accent); text-decoration: none; }
     a.inline:hover { text-decoration: underline; }
+    /* Contact layout (desktop + mobile) */
+    #contact form{
+      max-width: 760px;        /* keeps the card from stretching super wide */
+      margin: 0 auto;          /* centers the card in the page column */
+    }
+
+    /* Make the textarea behave nicely inside the card */
+    #contact textarea{
+      width: 100%;
+      box-sizing: border-box;
+      resize: vertical;         /* allow user to drag taller if needed */
+    }
+
+    /* Button row: center under the textarea (cleanest look) */
+    #contact .actions{
+      display: flex;
+      justify-content: center;  /* or: flex-start | flex-end if you prefer */
+      margin-top: 12px;
+      gap: 12px;
+    }
+
+    /* Optional: keep the Send button a nice size on desktop */
+    #contact .actions .btn{
+      min-width: 120px;
+      padding: 10px 16px;
+    }
   </style>
 </head>
 <body>
