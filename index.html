@@ -357,6 +357,64 @@
         border: 1px solid rgba(255,255,255,.08);
       }
     }
+
+    /* ====== MOBILE-ONLY FIXES (≤768px) ====== */
+    @media (max-width: 768px){
+
+      /* NAV: make two clean rows that never overlap */
+      .nav{
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 12px 12px;                 /* vertical + horizontal spacing */
+        padding: 10px 12px;
+      }
+      .nav .spacer{ display:none; }
+
+      /* Every pill is a self-sized inline-flex (prevents overlap) */
+      .nav a,
+      .nav button,
+      .nav .btn{
+        display: inline-flex;
+        align-items: center;
+        line-height: 1;                 /* removes tall line boxes */
+        padding: 10px 14px;
+        border-radius: 12px;
+        border: 1px solid rgba(255,255,255,.12);
+        background: rgba(255,255,255,.03);
+        box-shadow: none;
+        flex: 0 0 auto;                 /* don’t stretch; don’t shrink into each other */
+        width: auto;
+      }
+
+      /* Put Theme + Resume on their own row and keep them apart */
+      #theme-toggle,
+      .nav .btn{
+        order: 2;                       /* after the text links */
+      }
+      /* make them split the row nicely */
+      #theme-toggle{ width: calc(50% - 8px); justify-content: center; }
+      .nav .btn{    width: calc(50% - 8px); justify-content: center; }
+
+      /* a little breathing room below the nav so it doesn't touch the hero */
+      header{ margin-bottom: 6px; }
+
+      /* CONTACT: center the Send button and keep it away from the edge */
+      #contact form .row{
+        justify-content: center;        /* was end; centers the button */
+        gap: 10px;
+      }
+      #contact form .btn{
+        width: 100%;
+        max-width: 220px;               /* nice size, not edge-to-edge */
+      }
+
+      /* Safety: consistent sizing so borders don’t look heavy on phones */
+      .card{
+        border: 1px solid rgba(255,255,255,.08);
+        background: rgba(20,24,36,.55);
+      }
+    }
   </style>
 </head>
 <body>
