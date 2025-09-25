@@ -118,10 +118,12 @@
     a.inline { color: var(--accent); text-decoration: none; }
     a.inline:hover { text-decoration: underline; }
     /* Contact layout (desktop + mobile) */
-    #contact form{
-      max-width: 760px;        /* keeps the card from stretching super wide */
-      margin: 0 auto;          /* centers the card in the page column */
-    }
+    #contact form.card {
+      display: block;
+      width: 100%;       /* Take full available container width */
+      margin: 0 auto;    /* Keep it centered if container has padding */
+}
+
 
     /* Make the textarea behave nicely inside the card */
     #contact textarea{
