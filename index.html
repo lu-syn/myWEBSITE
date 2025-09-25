@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Luis Gonzalez — CS Portfolio</title>
   <link rel="icon" href="assetsPortfolio/favicon.png">
   <meta name="description" content="Computer Science student portfolio: projects, skills, resume, and contact." />
@@ -41,81 +41,13 @@
     }
     .container { max-width: 1050px; margin: 0 auto; padding: 28px 20px 80px; }
     header { position: sticky; top: 0; backdrop-filter: blur(8px); background: color-mix(in oklab, var(--bg), transparent 75%); border-bottom: 1px solid color-mix(in oklab, var(--text), transparent 90%); z-index: 20; }
-    /* --- NAVBAR RESET/STABILIZE ---------------------------------- */
-
-    /* Keep the header nav in one tidy row on desktop */
-    .nav{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:16px;
-      max-width:1050px;
-      margin:0 auto;
-      padding:12px 20px;
-    }
-
-    /* Make links/buttons in the nav look consistent */
-    .nav a, .nav button, .nav .btn{
-      line-height:1;
-      padding:8px 12px;
-      border-radius:12px;
-      border:1px solid color-mix(in oklab, var(--text), transparent 92%);
-      background: transparent;
-      box-shadow:none;
-      width:auto;               /* prevent full-width stretch */
-    }
-
-    /* Subtle hover so nothing looks “thick” */
-    .nav a:hover, .nav button:hover, .nav .btn:hover{
-      background: color-mix(in oklab, var(--text), transparent 94%);
-    }
-
-    /* Give the sticky header room so anchor jumps don't hide content */
-    section{ scroll-margin-top: 84px; }
-
-    /* ---------- Mobile layout: two neat rows, centered ------------ */
-    @media (max-width: 768px){
-      .nav{
-        flex-wrap:wrap;
-        justify-content:center;
-        gap:8px 12px;           /* space between pills */
-        padding:10px 12px;
-      }
-
-      /* Hide the spacer so items can center */
-      .nav .spacer{ display:none; }
-
-      /* Order: left links first row, actions second row */
-      .nav .brand{ order:0; }
-      .nav a[href^="#"]{ order:1; }     /* Skills, Contact */
-      #theme-toggle{ order:2; }
-      .nav .btn{ order:2; }             /* Download Résumé */
-
-      /* Tighten buttons so they don't bump into the next section */
-      #theme-toggle{ margin-bottom:4px; }
-    }
-
-    /* --- HERO IMAGE (keep proportions; no squish) ---------------- */
-    .avatar{
-      width:100%;
-      max-width:420px;
-      height:auto;
-      object-fit:cover;
-      border-radius:18px;
-      border:1px solid color-mix(in oklab, var(--text), transparent 90%);
-      box-shadow:0 10px 30px var(--shadow);
-      display:block;
-    }
-
-    /* --- MOBILE BACKGROUND: soften the gradient band ------------- */
-    @media (max-width: 768px){
-      body{
-        background:
-          radial-gradient(1200px 800px at 50% -260px, #2b3150 0%, transparent 72%),
-          linear-gradient(180deg, rgba(43,49,80,.18), transparent 12% 88%, rgba(0,0,0,.12)),
-          var(--bg);
-      }
-    }
+    .nav { display: flex; align-items: center; gap: 18px; padding: 12px 20px; max-width: 1050px; margin: 0 auto; }
+    .brand { font-weight: 700; letter-spacing: .3px; }
+    .spacer { flex: 1; }
+    .nav a { color: var(--text); text-decoration: none; opacity: .85; padding: 8px 10px; border-radius: 10px; }
+    .nav a:hover { background: color-mix(in oklab, var(--text), transparent 94%); opacity: 1; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 14px; border-radius: 12px; border: 1px solid color-mix(in oklab, var(--accent), transparent 55%); background: color-mix(in oklab, var(--accent), transparent 90%); color: var(--text); text-decoration: none; box-shadow: 0 10px 20px var(--shadow); }
+    .btn:hover { box-shadow: 0 14px 28px var(--shadow); }
 
     .hero { display: grid; grid-template-columns: 1.2fr .8fr; gap: 24px; padding: 48px 0 12px; align-items: center; }
     @media (max-width: 860px) { .hero { grid-template-columns: 1fr; } }
@@ -127,36 +59,20 @@
     .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
     .tag { font-size: .85rem; color: var(--muted); border: 1px dashed color-mix(in oklab, var(--accent), transparent 45%); padding: 6px 10px; border-radius: 999px; }
 
-    .avatar {
+    .avatar{
       width: 100%;
-      max-width: 420px;
-      height: auto;          /* no squish */
-      object-fit: cover;
+      max-width: 420px;      
+      aspect-ratio: 1 / 1;   
+      object-fit: cover;     
+      display: block;
       border-radius: 18px;
       border: 1px solid color-mix(in oklab, var(--text), transparent 90%);
       box-shadow: 0 10px 30px var(--shadow);
-      display: block;
       justify-self: end;
     }
     @media (max-width: 860px){ .avatar{ justify-self: start; } }
 
-    @media (max-width: 768px) {
-      body {
-        background:
-          radial-gradient(1100px 700px at 50% -250px, #2b3150 0%, transparent 70%),
-          linear-gradient(180deg, rgba(43,49,80,.25), transparent 15% 85%, rgba(0,0,0,.15)),
-          var(--bg);
-      }
-      .hero { padding-top: 24px; }
-      
-      .btn[href*="resume"] {
-        display: inline-block;
-        width: auto;
-        margin: 0.25rem auto;
-      }
-    }
-
-  section { padding-top: 38px; scroll-margin-top: 80px; }
+    section { padding-top: 38px; }
     h2 { font-size: clamp(1.4rem, 2.2vw, 1.8rem); margin: 0 0 14px; }
 
     .grid { display: grid; gap: 16px; grid-template-columns: repeat(12, 1fr); }
@@ -201,234 +117,18 @@
     .kbd { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: .85rem; border: 1px solid color-mix(in oklab, var(--text), transparent 85%); padding: 2px 6px; border-radius: 6px; }
     a.inline { color: var(--accent); text-decoration: none; }
     a.inline:hover { text-decoration: underline; }
-    /* ===== MOBILE-ONLY POLISH (iOS-friendly) ==================== */
-    @media (max-width: 768px){
-
-      /* Softer background so no abrupt band under the header */
-      body{
-        background:
-          radial-gradient(1200px 800px at 50% -260px, #2b3150 0%, transparent 72%),
-          linear-gradient(180deg, rgba(43,49,80,.15), transparent 12% 88%, rgba(0,0,0,.10)),
-          var(--bg);
-      }
-
-      /* Header: add safe-area padding (iPhone notch), soften border */
-      header{
-        padding-top: env(safe-area-inset-top);
-        -webkit-backdrop-filter: blur(8px);
-        backdrop-filter: blur(8px);
-        background: linear-gradient(180deg, rgba(8,10,16,.70), rgba(8,10,16,.25));
-        border-bottom: 1px solid rgba(255,255,255,.06);
-      }
-
-      /* Nav layout: two neat rows, centered */
-      .nav{
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 8px 12px;
-        padding: 10px 12px;
-        margin-bottom: 6px;              /* space below nav so it doesn't touch hero */
-      }
-      .nav .spacer{ display:none; }
-
-      /* Nav pills: lighter borders/background; no full-width buttons */
-      .nav a, .nav button, .nav .btn{
-        border: 1px solid rgba(255,255,255,.10);
-        background: rgba(255,255,255,.03);
-        box-shadow: none;
-        padding: 8px 12px;
-        border-radius: 12px;
-        width: auto;                     /* prevent stretching */
-      }
-      #theme-toggle{ margin-bottom: 2px; }
-
-      /* Make anchor jumps stop under sticky header on mobile too */
-      section{ scroll-margin-top: calc(72px + env(safe-area-inset-top)); }
-
-      /* Cards (Skills/Projects/Contact) — lighter borders on phones */
-      .card{
-        border: 1px solid rgba(255,255,255,.08);
-        background: rgba(20,24,36,.55);
-      }
-
-      /* Skills grid: tighter 2-column layout on phones */
-      #skills .skills{
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 12px;
-      }
-      #skills .skill{
-        padding: 14px;
-        min-height: auto;
-        border: 1px solid rgba(255,255,255,.08);
-        background: rgba(20,24,36,.55);
-        border-radius: 14px;
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      #skills .skill span{ font-weight: 600; margin-bottom: 4px; }
-      #skills .skill small{ font-size: .95rem; line-height: 1.4; white-space: normal; }
-
-      /* Hero image feels anchored; no squish */
-      .avatar{
-        width: 100%;
-        max-width: 420px;
-        height: auto;
-        object-fit: cover;
-        border: 1px solid rgba(255,255,255,.08);
-      }
-    }
-
-    /* ===== MOBILE-ONLY HARDENED STYLES ===== */
-    @media (max-width: 768px){
-
-      /* Kill the harsh gradient band on phones: use subtle bg */
-      body{
-        background: linear-gradient(180deg, rgba(20,24,36,.85), rgba(20,24,36,.6) 30%, var(--bg));
-      }
-
-      /* Header: respect the notch + keep a solid (no banding) top bar */
-      header{
-        padding-top: env(safe-area-inset-top);
-        background: rgba(12,16,24,.85);
-        -webkit-backdrop-filter: blur(10px);
-        backdrop-filter: blur(10px);
-        border-bottom: 1px solid rgba(255,255,255,.06);
-      }
-
-      /* Nav: two tidy rows, centered, consistent spacing */
-      .nav{
-        max-width: 100%;
-        padding: 10px 12px;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
-        gap: 8px 10px;
-      }
-      .nav .spacer{ display:none; }
-
-      /* Make all nav items look like small pills (lighter borders) */
-      .nav a, .nav button, .nav .btn{
-        padding: 8px 12px;
-        border-radius: 12px;
-        border: 1px solid rgba(255,255,255,.12);
-        background: rgba(255,255,255,.03);
-        box-shadow: none;
-        width: auto;            /* prevent full-width stretching */
-      }
-
-      /* Keep Theme from bumping into other items */
-      #theme-toggle{ margin-bottom: 2px; }
-
-      /* Ensure sections don't scroll under sticky header */
-      section{ scroll-margin-top: calc(72px + env(safe-area-inset-top)); }
-
-      /* Card borders softer on phones */
-      .card{
-        border: 1px solid rgba(255,255,255,.08);
-        background: rgba(20,24,36,.55);
-      }
-
-      /* Skills: compact 2-column layout only on mobile */
-      #skills .skills{
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0,1fr));
-        gap: 12px;
-      }
-      #skills .skill{
-        padding: 14px;
-        min-height: auto;
-        border: 1px solid rgba(255,255,255,.08);
-        background: rgba(20,24,36,.55);
-        border-radius: 14px;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      #skills .skill span{ font-weight: 600; margin-bottom: 4px; }
-      #skills .skill small{ white-space: normal; line-height: 1.4; }
-
-      /* Hero image: never squish */
-      .avatar{
-        width: 100%;
-        max-width: 420px;
-        height: auto;
-        object-fit: cover;
-        border: 1px solid rgba(255,255,255,.08);
-      }
-    }
-
-    /* ====== MOBILE-ONLY FIXES (≤768px) ====== */
-    @media (max-width: 768px){
-
-      /* NAV: make two clean rows that never overlap */
-      .nav{
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
-        gap: 12px 12px;                 /* vertical + horizontal spacing */
-        padding: 10px 12px;
-      }
-      .nav .spacer{ display:none; }
-
-      /* Every pill is a self-sized inline-flex (prevents overlap) */
-      .nav a,
-      .nav button,
-      .nav .btn{
-        display: inline-flex;
-        align-items: center;
-        line-height: 1;                 /* removes tall line boxes */
-        padding: 10px 14px;
-        border-radius: 12px;
-        border: 1px solid rgba(255,255,255,.12);
-        background: rgba(255,255,255,.03);
-        box-shadow: none;
-        flex: 0 0 auto;                 /* don’t stretch; don’t shrink into each other */
-        width: auto;
-      }
-
-      /* Put Theme + Resume on their own row and keep them apart */
-      #theme-toggle,
-      .nav .btn{
-        order: 2;                       /* after the text links */
-      }
-      /* make them split the row nicely */
-      #theme-toggle{ width: calc(50% - 8px); justify-content: center; }
-      .nav .btn{    width: calc(50% - 8px); justify-content: center; }
-
-      /* a little breathing room below the nav so it doesn't touch the hero */
-      header{ margin-bottom: 6px; }
-
-      /* CONTACT: center the Send button and keep it away from the edge */
-      #contact form .row{
-        justify-content: center;        /* was end; centers the button */
-        gap: 10px;
-      }
-      #contact form .btn{
-        width: 100%;
-        max-width: 220px;               /* nice size, not edge-to-edge */
-      }
-
-      /* Safety: consistent sizing so borders don’t look heavy on phones */
-      .card{
-        border: 1px solid rgba(255,255,255,.08);
-        background: rgba(20,24,36,.55);
-      }
-    }
   </style>
 </head>
 <body>
   <header>
-    <nav class="nav" aria-label="Main navigation">
-      <div class="nav-left">
-        <a href="#">Luis Gonzalez</a>
-        <a href="#skills">Skills</a>
-        <a href="#contact">Contact</a>
-      </div>
-      <div class="nav-right">
-        <button id="theme-toggle" class="switch" aria-pressed="false" aria-label="Toggle theme">🌗 Theme</button>
-        <a class="btn" href="Luis%20Gonzalez%202025%20Resume.pdf" target="_blank" rel="noopener">Download Résumé</a>
-      </div>
+    <nav class="nav">
+      <div class="brand">Luis Gonzalez</div>
+      <!--<a href="#projects">Projects</a>-->
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+      <div class="spacer"></div>
+      <button id="theme-toggle" class="switch" aria-pressed="false" aria-label="Toggle theme">🌗 Theme</button>
+      <a class="btn" href="Luis%20Gonzalez%202025%20Resume.pdf" target="_blank" rel="noopener">Download Résumé</a>
     </nav>
   </header>
 
@@ -444,8 +144,8 @@
         </div>
         <div class="tags" aria-label="core skills">
           <span class="tag">Java • Python • SQL</span>
-          <span class="tag">React</span>
-          <span class="tag">MySQL</span>
+          <span class="tag">React • Node</span>
+          <span class="tag">MySQL • Postgres</span>
           <span class="tag">AWS • Git</span>
         </div>
       </div>
@@ -456,10 +156,10 @@
       <h2>Skills</h2>
       <div class="skills">
         <div class="skill"><span>Languages</span><small>Java, Python, SQL, JS</small></div>
-        <div class="skill"><span>Frameworks</span><small>React</small></div>
-        <div class="skill"><span>Databases</span><small>MySQL</small></div>
-        <div class="skill"><span>Cloud</span><small>AWS</small></div>
-        <div class="skill"><span>Tools</span><small>Git</small></div>
+        <div class="skill"><span>Frameworks</span><small>React, Node, Express</small></div>
+        <div class="skill"><span>Databases</span><small>MySQL, Postgres</small></div>
+        <div class="skill"><span>Cloud</span><small>AWS (EC2, RDS)</small></div>
+        <div class="skill"><span>Tools</span><small>Git, Docker, Linux</small></div>
         <div class="skill"><span>Coursework</span><small>DS&A, DB Systems</small></div>
       </div>
     </section>
