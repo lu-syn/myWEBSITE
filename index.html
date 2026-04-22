@@ -1,277 +1,537 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Luis Gonzalez — CS Portfolio</title>
-  <link rel="icon" href="assetsPortfolio/favicon.png">
-  <meta name="description" content="Computer Science student portfolio: projects, skills, resume, and contact." />
-  <meta name="color-scheme" content="light dark">
-  <meta property="og:title" content="Luis Gonzalez — CS Portfolio">
-  <meta property="og:description" content="CS @ Brooklyn College. Software Engineering / Data.">
-  <meta property="og:image" content="https://YOUR_SITE/assetsPortfolio/15830016.jpg">
-  <meta property="og:type" content="website">
-
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Luis Gonzalez</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Cormorant:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #0b0e14;
-      --card: #121826;
-      --text: #e6e6e6;
-      --muted: #9aa4b2;
-      --accent: #7c93ff;
-      --ring: rgba(124,147,255,.35);
-      --shadow: rgba(0,0,0,.35);
-      --light-bg: #f7f8fb;
-      --light-card: #ffffff;
-      --light-text: #0f172a;
-      --light-muted: #475569;
-      --light-accent: #3b82f6;
-      --light-ring: rgba(59,130,246,.25);
-      --radius: 18px;
+      --black:   #0e0e0e;
+      --deep:    #141414;
+      --surface: #1a1a1a;
+      --raised:  #222222;
+      --border:  #2e2e2e;
+      --border2: #555555;
+      --red:     #c04040;
+      --red2:    #e05858;
+      --cobalt:  #4a6adc;
+      --cobalt2: #7898ff;
+      --gold:    #e0aa30;
+      --gold2:   #ffd060;
+      --emerald: #28a060;
+      --emerald2:#48d888;
+      --violet:  #9060d0;
+      --violet2: #c090ff;
+      --dim:     #b0b0b0;
+      --muted:   #cccccc;
+      --text:    #e0e0e0;
+      --bright:  #f8f8f8;
     }
-    @media (prefers-color-scheme: light) {
-      :root { --bg: var(--light-bg); --card: var(--light-card); --text: var(--light-text); --muted: var(--light-muted); --accent: var(--light-accent); --ring: var(--light-ring); }
-    }
-    html, body { height: 100%; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
     body {
-      margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Helvetica, Arial, sans-serif;
-      background: radial-gradient(1200px 600px at 20% -10%, #2b3150 0%, transparent 60%),
-                  radial-gradient(800px 400px at 120% -10%, #2b3150 0%, transparent 60%), var(--bg);
+      background: var(--black);
       color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+      cursor: none;
     }
-    .container { max-width: 1050px; margin: 0 auto; padding: 28px 20px 80px; }
-    header { position: sticky; top: 0; backdrop-filter: blur(8px); background: color-mix(in oklab, var(--bg), transparent 75%); border-bottom: 1px solid color-mix(in oklab, var(--text), transparent 90%); z-index: 20; }
-    .nav { display: flex; align-items: center; gap: 18px; padding: 12px 20px; max-width: 1050px; margin: 0 auto; }
-    .brand { font-weight: 700; letter-spacing: .3px; }
-    .spacer { flex: 1; }
-    .nav a { color: var(--text); text-decoration: none; opacity: .85; padding: 8px 10px; border-radius: 10px; }
-    .nav a:hover { background: color-mix(in oklab, var(--text), transparent 94%); opacity: 1; }
-    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 14px; border-radius: 12px; border: 1px solid color-mix(in oklab, var(--accent), transparent 55%); background: color-mix(in oklab, var(--accent), transparent 90%); color: var(--text); text-decoration: none; box-shadow: 0 10px 20px var(--shadow); }
-    .btn:hover { box-shadow: 0 14px 28px var(--shadow); }
-
-    .hero { display: grid; grid-template-columns: 1.2fr .8fr; gap: 24px; padding: 48px 0 12px; align-items: center; }
-    @media (max-width: 860px) { .hero { grid-template-columns: 1fr; } }
-    .card { background: linear-gradient(180deg, color-mix(in oklab, var(--card), transparent 0%), color-mix(in oklab, var(--card), transparent 0%)); border: 1px solid color-mix(in oklab, var(--text), transparent 90%); border-radius: var(--radius); box-shadow: 0 10px 30px var(--shadow); }
-    .p-hero { padding: 28px; }
-    h1 { font-size: clamp(1.8rem, 3vw, 2.6rem); margin: 0 0 10px; }
-    .subtitle { color: var(--muted); margin: 0 0 18px; line-height: 1.6; }
-    .row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
-    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
-    .tag { font-size: .85rem; color: var(--muted); border: 1px dashed color-mix(in oklab, var(--accent), transparent 45%); padding: 6px 10px; border-radius: 999px; }
-
-    .avatar{
-      width: 100%;
-      max-width: 420px;      
-      aspect-ratio: 1 / 1;   
-      object-fit: cover;     
-      display: block;
-      border-radius: 18px;
-      border: 1px solid color-mix(in oklab, var(--text), transparent 90%);
-      box-shadow: 0 10px 30px var(--shadow);
-      justify-self: end;
+    #cur {
+      position: fixed; width: 7px; height: 7px;
+      background: #e0e0e0; border-radius: 50%;
+      pointer-events: none; z-index: 9999;
+      transform: translate(-50%,-50%);
+      box-shadow: 0 0 10px rgba(200,200,200,0.4);
+      transition: transform 0.1s;
     }
-    @media (max-width: 860px){ .avatar{ justify-self: start; } }
+    #cur-ring {
+      position: fixed; width: 26px; height: 26px;
+      border: 1px solid #666666;
+      border-radius: 50%; pointer-events: none; z-index: 9998;
+      transform: translate(-50%,-50%);
+      transition: left 0.13s ease, top 0.13s ease, width 0.18s, height 0.18s;
+      opacity: 0.5;
+    }
+    body::before {
+      content: '';
+      position: fixed; inset: 0; pointer-events: none; z-index: 9000;
+      background: radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,0.6) 100%);
+    }
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.8rem 5rem;
+      transition: background 0.4s, border-color 0.4s;
+      border-bottom: 1px solid transparent;
+    }
+    nav.scrolled {
+      background: rgba(10,10,10,0.94);
+      backdrop-filter: blur(16px);
+      border-color: var(--border);
+    }
+    .nav-logo {
+      font-family: 'Cormorant', serif;
+      font-size: 1.15rem; font-weight: 300;
+      color: var(--bright); text-decoration: none;
+      letter-spacing: 0.04em;
+    }
+    .nav-links { display: flex; gap: 2.8rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.7rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--dim);
+      text-decoration: none; transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--bright); }
 
-    section { padding-top: 38px; }
-    h2 { font-size: clamp(1.4rem, 2.2vw, 1.8rem); margin: 0 0 14px; }
+    /* HERO */
+    #hero {
+      position: relative; min-height: 100vh;
+      display: flex; flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 5rem 6rem;
+      overflow: hidden;
+    }
+    .amb { position: absolute; border-radius: 50%; pointer-events: none; filter: blur(100px); }
+    .amb-r { width:500px;height:500px; background:radial-gradient(circle,rgba(180,50,50,0.22) 0%,transparent 70%); top:15%;left:5%; }
+    .amb-b { width:600px;height:600px; background:radial-gradient(circle,rgba(60,90,200,0.18) 0%,transparent 70%); top:25%;right:0%; }
+    .amb-g { width:380px;height:380px; background:radial-gradient(circle,rgba(30,140,80,0.14) 0%,transparent 70%); bottom:10%;left:30%; }
+    .amb-v { width:450px;height:450px; background:radial-gradient(circle,rgba(120,70,190,0.16) 0%,transparent 70%); top:0%;right:20%; }
+    .rose-svg {
+      position: absolute; top: 50%; right: -4%;
+      transform: translateY(-50%);
+      width: min(80vh, 680px); height: min(80vh, 680px);
+      pointer-events: none; opacity: 0.14;
+      animation: spinRose 150s linear infinite;
+    }
+    @keyframes spinRose { to { transform: translateY(-50%) rotate(360deg); } }
+    .hero-inner { position: relative; z-index: 2; max-width: 820px; }
+    .hero-label {
+      font-size: 0.68rem; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--dim);
+      margin-bottom: 1.6rem;
+    }
+    h1 {
+      font-family: 'Cormorant', serif;
+      font-size: clamp(3.5rem, 9vw, 8.5rem);
+      font-weight: 300; color: var(--bright);
+      line-height: 0.95; letter-spacing: -0.01em;
+      margin-bottom: 2rem;
+    }
+    h1 em { font-style: italic; color: var(--muted); }
+    .hero-line {
+      width: 3rem; height: 1px;
+      background: linear-gradient(to right, #888, #444);
+      margin-bottom: 1.6rem;
+    }
+    .hero-desc {
+      font-size: 0.82rem; color: var(--muted);
+      max-width: 420px; line-height: 1.85; margin-bottom: 3rem;
+    }
+    .cta-row { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn {
+      font-size: 0.68rem; letter-spacing: 0.16em;
+      text-transform: uppercase; text-decoration: none;
+      padding: 0.75rem 1.8rem;
+      border: 1px solid var(--border2); color: var(--muted);
+      background: transparent; cursor: none;
+      transition: color 0.25s, border-color 0.25s, background 0.25s;
+    }
+    .btn:hover { color: var(--bright); border-color: var(--muted); }
+    .btn-p {
+      border-color: #666;
+      color: var(--bright);
+      background: rgba(255,255,255,0.07);
+    }
+    .btn-p:hover {
+      background: rgba(255,255,255,0.13);
+      border-color: #aaa;
+      box-shadow: 0 0 24px rgba(255,255,255,0.08);
+    }
+    .scroll-hint {
+      position: absolute; bottom: 2.5rem; right: 5rem;
+      font-size: 0.6rem; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--dim); z-index: 2;
+      writing-mode: vertical-rl;
+      animation: hintPulse 3s ease-in-out infinite;
+    }
+    @keyframes hintPulse { 0%,100%{opacity:0.2;} 50%{opacity:0.6;} }
 
-    .grid { display: grid; gap: 16px; grid-template-columns: repeat(12, 1fr); }
-    .col-6 { grid-column: span 6; }
-    .col-4 { grid-column: span 4; }
-    @media (max-width: 860px) { .col-6, .col-4 { grid-column: span 12; } }
-
-    .project { padding: 18px; border-radius: var(--radius); border: 1px solid color-mix(in oklab, var(--text), transparent 90%); background: linear-gradient(180deg, color-mix(in oklab, var(--card), transparent 0%), color-mix(in oklab, var(--card), transparent 0%)); display: flex; gap: 16px; align-items: start; }
-    .project h3 { margin: 0 0 6px; font-size: 1.05rem; }
-    .project p { margin: 0 0 10px; color: var(--muted); }
-    .project small { color: var(--muted); }
-    .project .thumb { width: 88px; min-width: 88px; aspect-ratio: 4/3; border-radius: 12px; background: url('https://picsum.photos/400') center/cover; border: 1px solid color-mix(in oklab, var(--text), transparent 85%); }
-
-    .skills { display: grid; gap: 10px; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
-    
-    .skill {
-      padding: 16px;
-      border: 1px solid color-mix(in oklab, var(--text), transparent 90%);
-      border-radius: 12px;
-      background: color-mix(in oklab, var(--card), transparent 0%);
-      display: flex;
-      flex-direction: column;   /* stack label and items vertically */
-      justify-content: center;
-      align-items: flex-start;  /* left-align text */
-      min-height: 90px;         /* keeps boxes even height */
+    /* SECTIONS */
+    .wrap { max-width: 1000px; margin: 0 auto; padding: 7rem 5rem; position: relative; z-index: 2; }
+    .sec-top {
+      display: flex; align-items: baseline;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.5rem; margin-bottom: 4rem;
+    }
+    h2 {
+      font-family: 'Cormorant', serif;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 300; color: var(--bright);
+    }
+    .sec-num {
+      font-size: 0.62rem; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--dim);
     }
 
-    .skill span {
-      font-weight: 600;
-      margin-bottom: 6px;
+    /* ABOUT */
+    #about { border-top: 1px solid var(--border); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+
+    /* photo */
+    .about-photo-wrap {
+      position: relative; width: 100%;
+      aspect-ratio: 3/4; overflow: hidden;
+      border: 1px solid var(--border2);
+    }
+    .about-photo-wrap::before {
+      content: ''; position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(to bottom, transparent 60%, rgba(14,14,14,0.88) 100%);
+    }
+    .about-photo-wrap img {
+      width: 100%; height: 100%; object-fit: cover;
+      object-position: center top;
+      filter: saturate(0.85) brightness(0.95);
+      transition: filter 0.4s;
+    }
+    .about-photo-wrap:hover img { filter: saturate(0.9) brightness(1); }
+
+    .about-right {}
+    .about-text p { font-size: 0.83rem; color: var(--muted); line-height: 1.9; margin-bottom: 1.1rem; }
+    .about-text p strong { color: var(--text); font-weight: 400; }
+    .about-meta { display: flex; flex-direction: column; margin-top: 2rem; }
+    .meta-row {
+      display: flex; justify-content: space-between;
+      padding: 0.85rem 0; border-bottom: 1px solid var(--border);
+      font-size: 0.78rem;
+    }
+    .meta-row:last-child { border-bottom: none; }
+    .meta-key { color: var(--dim); letter-spacing: 0.06em; }
+    .meta-val { color: var(--text); text-align: right; }
+
+    /* PROJECTS */
+    #projects { border-top: 1px solid var(--border); background: var(--deep); }
+    .proj-list { display: flex; flex-direction: column; }
+    .proj-row {
+      display: grid; grid-template-columns: 1fr auto;
+      align-items: center; gap: 2rem;
+      padding: 2.2rem 0; border-bottom: 1px solid var(--border);
+      text-decoration: none; color: inherit;
+      position: relative;
+    }
+    .proj-row:first-child { border-top: 1px solid var(--border); }
+    .proj-row:nth-child(1) { --pc: var(--red2);     --pg: rgba(176,48,48,0.06); }
+    .proj-row:nth-child(2) { --pc: var(--cobalt2);  --pg: rgba(58,90,204,0.06); }
+    .proj-row::before {
+      content: ''; position: absolute;
+      left: -5rem; right: -5rem; top: 0; bottom: 0;
+      background: var(--pg);
+      opacity: 0; transition: opacity 0.25s; pointer-events: none;
+    }
+    .proj-row:hover::before { opacity: 1; }
+    .proj-row:hover .proj-name { color: var(--bright); }
+    .proj-row:hover .proj-arrow { opacity: 1; transform: translateX(4px); color: var(--pc); }
+    .proj-name {
+      font-family: 'Cormorant', serif;
+      font-size: clamp(1.3rem, 2.5vw, 1.9rem);
+      font-weight: 300; color: var(--text);
+      margin-bottom: 0.3rem; transition: color 0.2s;
+    }
+    .proj-desc { font-size: 0.76rem; color: var(--dim); line-height: 1.7; }
+    .proj-right { text-align: right; flex-shrink: 0; }
+    .proj-stack { font-size: 0.65rem; color: var(--dim); letter-spacing: 0.06em; margin-bottom: 0.5rem; }
+    .proj-arrow { font-size: 1rem; color: var(--muted); opacity: 0; transition: opacity 0.2s, transform 0.2s, color 0.2s; }
+
+    /* EXPERIENCE */
+    #experience { border-top: 1px solid var(--border); }
+    .exp-list { display: flex; flex-direction: column; gap: 3.2rem; }
+    .exp-item { display: grid; grid-template-columns: 10rem 1fr; gap: 3rem; }
+    .exp-date { font-size: 0.68rem; color: var(--dim); letter-spacing: 0.08em; padding-top: 0.15rem; line-height: 1.5; }
+    .exp-role {
+      font-family: 'Cormorant', serif;
+      font-size: 1.25rem; font-weight: 300;
+      color: var(--bright); margin-bottom: 0.15rem;
+    }
+    .exp-item:nth-child(1) .exp-org { color: var(--cobalt2); }
+    .exp-item:nth-child(2) .exp-org { color: var(--emerald2); }
+    .exp-item:nth-child(3) .exp-org { color: var(--gold2); }
+    .exp-item:nth-child(4) .exp-org { color: var(--red2); }
+    .exp-org { font-size: 0.7rem; letter-spacing: 0.08em; margin-bottom: 0.65rem; }
+    .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
+    .exp-bullets li {
+      font-size: 0.78rem; color: var(--dim); line-height: 1.75;
+      padding-left: 1rem; position: relative;
+    }
+    .exp-bullets li::before {
+      content: '—'; position: absolute; left: 0;
+      color: var(--border2); font-size: 0.65rem;
     }
 
-    .skill small {
-      color: var(--muted);
-      line-height: 1.4;
+    /* FOOTER */
+    footer {
+      position: relative; z-index: 2;
+      border-top: 1px solid var(--border);
+      padding: 3rem 5rem;
+      display: flex; justify-content: space-between; align-items: center;
     }
-
-    .footer { margin-top: 40px; padding: 24px; text-align: center; color: var(--muted); }
-    .visually-hidden { position: absolute !important; height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px); white-space: nowrap; }
-
-    .switch { border: 1px solid color-mix(in oklab, var(--text), transparent 88%); padding: 6px 10px; border-radius: 999px; cursor: pointer; }
-    .kbd { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: .85rem; border: 1px solid color-mix(in oklab, var(--text), transparent 85%); padding: 2px 6px; border-radius: 6px; }
-    a.inline { color: var(--accent); text-decoration: none; }
-    a.inline:hover { text-decoration: underline; }
-    /* Contact layout (desktop + mobile) */
-    #contact form.card {
-      display: block;
-      width: 100%;       /* Take full available container width */
-      margin: 0 auto;    /* Keep it centered if container has padding */
-}
-
-
-    /* Make the textarea behave nicely inside the card */
-    #contact textarea{
-      width: 100%;
-      box-sizing: border-box;
-      resize: vertical;         /* allow user to drag taller if needed */
+    .foot-left {
+      font-family: 'Cormorant', serif;
+      font-size: 1rem; font-weight: 300; color: var(--muted);
     }
-
-    /* Button row: center under the textarea (cleanest look) */
-    #contact .actions{
-      display: flex;
-      justify-content: center;  /* or: flex-start | flex-end if you prefer */
-      margin-top: 12px;
-      gap: 12px;
+    .foot-links { display: flex; gap: 2rem; }
+    .foot-links a {
+      font-size: 0.68rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--dim);
+      text-decoration: none; transition: color 0.2s;
     }
+    .foot-links a:hover { color: var(--bright); }
 
-    /* Optional: keep the Send button a nice size on desktop */
-    #contact .actions .btn{
-      min-width: 120px;
-      padding: 10px 16px;
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.75s ease, transform 0.75s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+    .d1{transition-delay:0.08s;} .d2{transition-delay:0.16s;}
+    .d3{transition-delay:0.24s;} .d4{transition-delay:0.32s;}
+
+    @media(max-width:768px){
+      nav { padding: 1.2rem 1.5rem; }
+      .nav-links { gap: 1.5rem; }
+      #hero { padding: 0 1.5rem 5rem; }
+      .wrap { padding: 5rem 1.5rem; }
+      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .exp-item { grid-template-columns: 1fr; gap: 0.4rem; }
+      .proj-row { grid-template-columns: 1fr; }
+      .proj-right { display: none; }
+      footer { flex-direction: column; gap: 1.5rem; text-align: center; padding: 2.5rem 1.5rem; }
     }
-
-    /* Contact form fix: ensure form.card spans its container and textarea is full-width */
-    form.card {
-      width: 100%;              /* Let it span full width of container */
-      max-width: 100%;          /* Prevent shrinking */
-      box-sizing: border-box;   /* Include padding in total width */
-    }
-
-    form.card textarea {
-      width: 100%;              /* Force full width inside form */
-      resize: vertical;         /* Let user expand vertically if needed */
-    }
-    /* --- mobile-only: keep the 2nd nav row from touching the hero --- */
-  @media (max-width: 768px){
-    header{
-      padding-bottom: 10px;            /* grow the header box */
-      margin-bottom: 6px;               /* tiny gap before content */
-      background: rgba(12,16,24,.85);   /* solid-ish so pills don't look “floaty” */
-      -webkit-backdrop-filter: blur(8px);
-      backdrop-filter: blur(8px);
-      z-index: 100;                      /* stay above content */
-    }
-
-    .nav{
-      flex-wrap: wrap;
-      gap: 10px 12px;                    /* consistent row spacing */
-    }
-
-  /* keep Theme + Resume on row 2 and sized nicely */
-  #theme-toggle,
-  .nav .btn{
-    order: 2;
-    width: calc(50% - 8px);
-    justify-content: center;
-  }
-}
-
   </style>
 </head>
 <body>
-  <header>
-    <nav class="nav">
-      <div class="brand">Luis Gonzalez</div>
-      <!--<a href="#projects">Projects</a>-->
-      <a href="#skills">Skills</a>
-      <a href="#contact">Contact</a>
-      <div class="spacer"></div>
-      <button id="theme-toggle" class="switch" aria-pressed="false" aria-label="Toggle theme">🌗 Theme</button>
-      <a class="btn" href="Luis%20Gonzalez%202025%20Resume.pdf" target="_blank" rel="noopener">Download Résumé</a>
-    </nav>
-  </header>
 
-  <main class="container">
-    <section class="hero">
-      <div class="card p-hero">
-        <h1>Hello, I’m <span class="inline" style="color:var(--accent)">Luis Gonzalez</span> — CS @ Brooklyn College</h1>
-        <p class="subtitle">I build fast, accessible web apps and love algorithms, data modeling, and systems design. I’m seeking a Fall/Spring <strong>Software Engineering / Data</strong> internship.</p>
-        <div class="row">
-          <a class="btn" href="#projects">See my projects →</a>
-          <a class="inline" href="mailto:lu.gonzalezxv@gmail.com">lu.gonzalezxv@gmail.com</a>
-          <span class="tag">Open to relocate</span>
+<div id="cur"></div>
+<div id="cur-ring"></div>
+
+<nav id="nav">
+  <a href="#hero" class="nav-logo">Luis Gonzalez</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="https://github.com/lusyn" target="_blank">GitHub ↗</a></li>
+  </ul>
+</nav>
+
+<section id="hero">
+  <div class="amb amb-r"></div>
+  <div class="amb amb-b"></div>
+  <div class="amb amb-g"></div>
+  <div class="amb amb-v"></div>
+
+  <svg class="rose-svg" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="300" cy="300" r="290" fill="none" stroke="#b080f0" stroke-width="0.8"/>
+    <circle cx="300" cy="300" r="222" fill="none" stroke="#d04040" stroke-width="0.6"/>
+    <circle cx="300" cy="300" r="155" fill="none" stroke="#6080f0" stroke-width="0.8"/>
+    <circle cx="300" cy="300" r="88"  fill="none" stroke="#f0c040" stroke-width="0.6"/>
+    <circle cx="300" cy="300" r="32"  fill="none" stroke="#38c070" stroke-width="1"/>
+    <g stroke="#b080f0" stroke-width="0.45">
+      <line x1="300" y1="10"  x2="300" y2="590"/>
+      <line x1="10"  y1="300" x2="590" y2="300"/>
+      <line x1="92"  y1="92"  x2="508" y2="508"/>
+      <line x1="508" y1="92"  x2="92"  y2="508"/>
+      <line x1="300" y1="10"  x2="300" y2="590" transform="rotate(22.5 300 300)"/>
+      <line x1="300" y1="10"  x2="300" y2="590" transform="rotate(45   300 300)"/>
+      <line x1="300" y1="10"  x2="300" y2="590" transform="rotate(67.5 300 300)"/>
+    </g>
+    <path d="M300,300 L370,215 A155,155 0 0,1 455,300 Z" fill="#b03030" opacity="0.32"/>
+    <path d="M300,300 L230,215 A155,155 0 0,0 145,300 Z" fill="#3a5acc" opacity="0.28"/>
+    <path d="M300,300 L385,382 A155,155 0 0,0 300,462 Z" fill="#208050" opacity="0.25"/>
+    <path d="M300,300 L215,382 A155,155 0 0,1 300,462 Z" fill="#d09820" opacity="0.25"/>
+    <path d="M300,300 L455,300 A155,155 0 0,1 385,382 Z" fill="#8050c0" opacity="0.22"/>
+    <path d="M300,300 L145,300 A155,155 0 0,0 215,382 Z" fill="#b03030" opacity="0.18"/>
+  </svg>
+
+  <div class="hero-inner">
+    <p class="hero-label">Software Engineer — Brooklyn, NY</p>
+    <h1>Luis<br><em>Gonzalez</em></h1>
+    <div class="hero-line"></div>
+    <p class="hero-desc">CS student at Brooklyn College building data pipelines, club platforms, and things that actually matter.</p>
+    <div class="cta-row">
+      <a href="#projects" class="btn btn-p">My Work</a>
+      <a href="#about" class="btn">About Me</a>
+      <a href="LuisGonzalez2026.pdf" target="_blank" class="btn">Resume ↗</a>
+    </div>
+  </div>
+
+  <span class="scroll-hint">Scroll</span>
+</section>
+
+<!-- ABOUT -->
+<div id="about">
+  <div class="wrap">
+    <div class="sec-top reveal">
+      <h2>About</h2>
+      <span class="sec-num">01</span>
+    </div>
+    <div class="about-grid">
+      <div class="about-photo-wrap reveal d1">
+        <img src="LG2026.jpg" alt="Luis Gonzalez"/>
+      </div>
+      <div class="about-right">
+        <div class="about-text">
+          <p class="reveal d1">I'm <strong>Luis Gonzalez</strong>, a software engineer and CS student at Brooklyn College finishing my B.S. in June 2026.</p>
+          <p class="reveal d2">I've shipped data dashboards tracking $2.7B in ticket revenue, built open-source club platforms used by 900+ students, and organized Brooklyn's first in-person hackathon.</p>
+          <p class="reveal d3">I like understanding systems deeply — then making them better.</p>
         </div>
-        <div class="tags" aria-label="core skills">
-          <span class="tag">Java • Python • SQL</span>
-          <span class="tag">React • Node</span>
-          <span class="tag">MySQL • Postgres</span>
-          <span class="tag">AWS • Git</span>
+        <div class="about-meta reveal d2">
+          <div class="meta-row"><span class="meta-key">Location</span><span class="meta-val">Brooklyn, NY</span></div>
+          <div class="meta-row"><span class="meta-key">School</span><span class="meta-val">Brooklyn College, CUNY</span></div>
+          <div class="meta-row"><span class="meta-key">Degree</span><span class="meta-val">B.S. Computer Science, 2026</span></div>
+          <div class="meta-row"><span class="meta-key">Email</span><span class="meta-val">lu.gonzalezxv@gmail.com</span></div>
+          <div class="meta-row"><span class="meta-key">Status</span><span class="meta-val">Open to opportunities</span></div>
         </div>
       </div>
-      <img class="avatar" src="assetsPortfolio/15830016.jpg" alt="Luis Gonzalez portrait" width="600" height="600">
-    </section>
+    </div>
+  </div>
+</div>
 
-    <section id="skills">
-      <h2>Skills</h2>
-      <div class="skills">
-        <div class="skill"><span>Languages</span><small>Java, Python, SQL, JS</small></div>
-        <div class="skill"><span>Frameworks</span><small>React, Node, Express</small></div>
-        <div class="skill"><span>Databases</span><small>MySQL, Postgres</small></div>
-        <div class="skill"><span>Cloud</span><small>AWS (EC2, RDS)</small></div>
-        <div class="skill"><span>Tools</span><small>Git, Docker, Linux</small></div>
-        <div class="skill"><span>Coursework</span><small>DS&A, DB Systems</small></div>
-      </div>
-    </section>
-
-    <section id="projects">
+<!-- PROJECTS -->
+<div id="projects">
+  <div class="wrap">
+    <div class="sec-top reveal">
       <h2>Projects</h2>
-      <div class="card p-hero">
-        <p class="subtitle">🚧 Projects are <strong>coming soon</strong>! Check back later for updates as I add personal, academic, and open‑source work.</p>
-      </div>
-    </section>
+      <span class="sec-num">02</span>
+    </div>
+    <div class="proj-list">
 
-    <section id="contact">
-      <h2>Contact</h2>
-      <p>Best way to reach me: <a class="inline" href="mailto:lu.gonzalezxv@gmail.com">lu.gonzalezxv@gmail.com</a>. I’m also on <a class="inline" href="https://www.linkedin.com/in/luis-gonzalez-148354272">LinkedIn</a> and <a class="inline" href="https://github.com/lu-syn" target="_blank" rel="noopener">GitHub</a>.</p>
-      <form class="card p-hero" onsubmit="event.preventDefault(); alert('Thanks! This demo form doesn\'t send email.');">
-        <label class="visually-hidden" for="msg">Message</label>
-        <textarea id="msg" rows="5" placeholder="Write me a short message…" style="width:100%; padding:12px; border-radius:12px; border:1px solid color-mix(in oklab, var(--text), transparent 85%); background: transparent; color: var(--text);"></textarea>
-        <div class="row" style="justify-content:end; margin-top:10px">
-          <button class="btn" type="submit">Send</button>
+      <a href="https://lusyn.github.io/myWEBSITE/" target="_blank" class="proj-row reveal d1">
+        <div>
+          <div class="proj-name">Club Connector — BC CS Club Website</div>
+          <div class="proj-desc">Open-sourced Brooklyn College CS Club site. Built a live room-status feature for the e-board, launched a resources page used by 900+ students, and maintained the full codebase.</div>
         </div>
-      </form>
-    </section>
+        <div class="proj-right">
+          <div class="proj-stack">TypeScript · Tailwind CSS</div>
+          <div class="proj-arrow">→</div>
+        </div>
+      </a>
 
-    <footer class="footer">© <span id="year"></span> Luis Gonzalez. Built with vanilla HTML/CSS. <a class="inline" href="#top">Back to top</a></footer>
-  </main>
+      <a href="#" class="proj-row reveal d2">
+        <div>
+          <div class="proj-name">Hack Brooklyn 2026</div>
+          <div class="proj-desc">Co-organized Brooklyn College's first in-person hackathon — 100+ participants, faculty coordination, Discord server management, and $10,000+ budget oversight.</div>
+        </div>
+        <div class="proj-right">
+          <div class="proj-stack">Event Org · Community</div>
+          <div class="proj-arrow">→</div>
+        </div>
+      </a>
 
-  <script>
-    const y = document.getElementById('year'); if (y) y.textContent = new Date().getFullYear();
-    const toggle = document.getElementById('theme-toggle');
-    const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
-    let mode = localStorage.getItem('mode') || (prefersLight ? 'light' : 'dark');
-    function apply(mode){
-      if(mode === 'light'){ document.documentElement.style.setProperty('--bg', getComputedStyle(document.documentElement).getPropertyValue('--light-bg'));
-        document.documentElement.style.setProperty('--card', getComputedStyle(document.documentElement).getPropertyValue('--light-card'));
-        document.documentElement.style.setProperty('--text', getComputedStyle(document.documentElement).getPropertyValue('--light-text'));
-        document.documentElement.style.setProperty('--muted', getComputedStyle(document.documentElement).getPropertyValue('--light-muted'));
-        document.documentElement.style.setProperty('--accent', getComputedStyle(document.documentElement).getPropertyValue('--light-accent'));
-        document.documentElement.style.setProperty('--ring', getComputedStyle(document.documentElement).getPropertyValue('--light-ring'));
-      } else { document.location.reload(); }
-      localStorage.setItem('mode', mode);
-    }
-    if(mode==='light') apply('light');
-    toggle?.addEventListener('click', ()=>{
-      mode = (mode==='light') ? 'dark' : 'light';
-      apply(mode);
-      toggle.setAttribute('aria-pressed', String(mode==='light'));
+    </div>
+  </div>
+</div>
+
+<!-- EXPERIENCE -->
+<div id="experience">
+  <div class="wrap">
+    <div class="sec-top reveal">
+      <h2>Experience</h2>
+      <span class="sec-num">03</span>
+    </div>
+    <div class="exp-list">
+
+      <div class="exp-item reveal d1">
+        <div class="exp-date">Oct 2025</div>
+        <div>
+          <div class="exp-role">Software Engineer</div>
+          <div class="exp-org">Sports Media Inc. — Remote</div>
+          <ul class="exp-bullets">
+            <li>Built a Looker Studio dashboard on Google BigQuery covering $2.7B in ticket revenue and 69M tickets sold.</li>
+            <li>Optimized SQL queries to clean and aggregate datasets, improving data refresh time by ~40%.</li>
+            <li>Streamlined data pipelines with the marketing analytics team, cutting reporting time by 80%.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item reveal d2">
+        <div class="exp-date">Jul 2024 –<br>Aug 2025</div>
+        <div>
+          <div class="exp-role">Instructor</div>
+          <div class="exp-org">iCAMP — New York, NY</div>
+          <ul class="exp-bullets">
+            <li>Provided technical support troubleshooting computers, laptops, and printers.</li>
+            <li>Guided campers in 3D modeling with TinkerCAD, building engineering skills.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item reveal d3">
+        <div class="exp-date">Oct 2023 –<br>Mar 2024</div>
+        <div>
+          <div class="exp-role">Technician Intern</div>
+          <div class="exp-org">NYC Department of Education</div>
+          <ul class="exp-bullets">
+            <li>Delivered game development lessons in Scratch to 20–40 campers.</li>
+            <li>Conducted factory resets and OS reinstalls on 10+ laptops.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item reveal d4">
+        <div class="exp-date">Feb 2023 –<br>May 2023</div>
+        <div>
+          <div class="exp-role">Technician Assistant</div>
+          <div class="exp-org">Chinese Methodist Center — New York, NY</div>
+          <ul class="exp-bullets">
+            <li>Used Google Suite to streamline admin tasks and organizational efficiency.</li>
+            <li>Supported students and teachers with tutoring and technical assistance.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span class="foot-left">Luis Gonzalez</span>
+  <div class="foot-links">
+    <a href="mailto:lu.gonzalezxv@gmail.com">Email</a>
+    <a href="https://www.linkedin.com/in/luis-gonzalez-148354272" target="_blank">LinkedIn</a>
+    <a href="https://github.com/lusyn" target="_blank">GitHub</a>
+    <a href="LuisGonzalez2026.pdf" target="_blank">Resume</a>
+  </div>
+</footer>
+
+<script>
+  const cur = document.getElementById('cur');
+  const ring = document.getElementById('cur-ring');
+  document.addEventListener('mousemove', e => {
+    cur.style.left  = e.clientX + 'px';
+    cur.style.top   = e.clientY + 'px';
+    ring.style.left = e.clientX + 'px';
+    ring.style.top  = e.clientY + 'px';
+  });
+  document.querySelectorAll('a,button').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      cur.style.transform = 'translate(-50%,-50%) scale(2)';
+      ring.style.width = '44px'; ring.style.height = '44px'; ring.style.opacity = '0.85';
     });
-  </script>
+    el.addEventListener('mouseleave', () => {
+      cur.style.transform = 'translate(-50%,-50%) scale(1)';
+      ring.style.width = '26px'; ring.style.height = '26px'; ring.style.opacity = '0.45';
+    });
+  });
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 50));
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
 </body>
 </html>
