@@ -44,23 +44,6 @@
       font-weight: 300;
       line-height: 1.7;
       overflow-x: hidden;
-      cursor: none;
-    }
-    #cur {
-      position: fixed; width: 7px; height: 7px;
-      background: #e0e0e0; border-radius: 50%;
-      pointer-events: none; z-index: 9999;
-      transform: translate(-50%,-50%);
-      box-shadow: 0 0 10px rgba(200,200,200,0.4);
-      transition: transform 0.1s;
-    }
-    #cur-ring {
-      position: fixed; width: 26px; height: 26px;
-      border: 1px solid #666666;
-      border-radius: 50%; pointer-events: none; z-index: 9998;
-      transform: translate(-50%,-50%);
-      transition: left 0.13s ease, top 0.13s ease, width 0.18s, height 0.18s;
-      opacity: 0.5;
     }
     body::before {
       content: '';
@@ -143,7 +126,7 @@
       text-transform: uppercase; text-decoration: none;
       padding: 0.75rem 1.8rem;
       border: 1px solid var(--border2); color: var(--muted);
-      background: transparent; cursor: none;
+      background: transparent;
       transition: color 0.25s, border-color 0.25s, background 0.25s;
     }
     .btn:hover { color: var(--bright); border-color: var(--muted); }
@@ -248,6 +231,40 @@
       display: block;
     }
     .proj-card:hover .proj-demo img { transform: scale(1.03); }
+    .proj-demo img { cursor: pointer; }
+
+    /* LIGHTBOX */
+    #lightbox {
+      position: fixed; inset: 0; z-index: 10000;
+      background: rgba(6,6,6,0.94);
+      display: flex; align-items: center; justify-content: center;
+      padding: 4rem;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+    #lightbox.open { opacity: 1; pointer-events: auto; }
+    #lightbox img {
+      max-width: 100%; max-height: 100%;
+      object-fit: contain;
+      border: 1px solid var(--border2);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      transform: scale(0.97);
+      transition: transform 0.25s ease;
+    }
+    #lightbox.open img { transform: scale(1); }
+    #lightbox-close {
+      position: absolute; top: 2rem; right: 2.5rem;
+      background: none; border: 1px solid var(--border2);
+      color: var(--muted); width: 2.4rem; height: 2.4rem;
+      font-size: 1.1rem; line-height: 1;
+      display: flex; align-items: center; justify-content: center;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    #lightbox-close:hover { color: var(--bright); border-color: var(--muted); }
+    @media(max-width:768px){
+      #lightbox { padding: 1.5rem; }
+      #lightbox-close { top: 1rem; right: 1rem; }
+    }
     .proj-demo-label {
       position: absolute; bottom: 0.8rem; left: 0.8rem;
       font-size: 0.58rem; letter-spacing: 0.14em;
@@ -407,11 +424,6 @@
     .d1{transition-delay:0.08s;} .d2{transition-delay:0.16s;}
     .d3{transition-delay:0.24s;} .d4{transition-delay:0.32s;}
 
-    @media (hover: none) {
-      body, .btn { cursor: auto; }
-      #cur, #cur-ring { display: none; }
-    }
-
     @media(max-width:768px){
       nav { padding: 1.2rem 1.5rem; flex-direction: column; align-items: flex-start; gap: 0.8rem; }
       .nav-links { gap: 1.2rem; flex-wrap: wrap; }
@@ -428,8 +440,10 @@
 </head>
 <body>
 
-<div id="cur"></div>
-<div id="cur-ring"></div>
+<div id="lightbox">
+  <button id="lightbox-close" aria-label="Close">✕</button>
+  <img id="lightbox-img" src="" alt=""/>
+</div>
 
 <nav id="nav">
   <a href="#hero" class="nav-logo">Luis Gonzalez</a>
@@ -775,24 +789,23 @@
 </footer>
 
 <script>
-  const cur = document.getElementById('cur');
-  const ring = document.getElementById('cur-ring');
-  document.addEventListener('mousemove', e => {
-    cur.style.left  = e.clientX + 'px';
-    cur.style.top   = e.clientY + 'px';
-    ring.style.left = e.clientX + 'px';
-    ring.style.top  = e.clientY + 'px';
+  // LIGHTBOX
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  function openLightbox(src, alt) {
+    lightboxImg.src = src;
+    lightboxImg.alt = alt || '';
+    lightbox.classList.add('open');
+  }
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+  }
+  document.querySelectorAll('.proj-demo img').forEach(img => {
+    img.addEventListener('click', () => openLightbox(img.src, img.alt));
   });
-  document.querySelectorAll('a,button').forEach(el => {
-    el.addEventListener('mouseenter', () => {
-      cur.style.transform = 'translate(-50%,-50%) scale(2)';
-      ring.style.width = '44px'; ring.style.height = '44px'; ring.style.opacity = '0.85';
-    });
-    el.addEventListener('mouseleave', () => {
-      cur.style.transform = 'translate(-50%,-50%) scale(1)';
-      ring.style.width = '26px'; ring.style.height = '26px'; ring.style.opacity = '0.45';
-    });
-  });
+  document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 50));
   const obs = new IntersectionObserver(entries => {
