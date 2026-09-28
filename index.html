@@ -355,6 +355,7 @@
       filter: saturate(0.7) brightness(0.85);
       transition: filter 0.4s, transform 0.5s;
       display: block;
+      cursor: pointer;
     }
     .lead-card:hover .lead-photo {
       filter: saturate(0.9) brightness(1);
@@ -364,6 +365,7 @@
       position: absolute; bottom: 0; left: 0; right: 0;
       padding: 1.5rem;
       background: linear-gradient(to top, rgba(10,10,10,0.95) 0%, transparent 100%);
+      pointer-events: none;
     }
     .lead-title {
       font-family: 'Cormorant', serif;
@@ -800,7 +802,7 @@
   function closeLightbox() {
     lightbox.classList.remove('open');
   }
-  document.querySelectorAll('.proj-demo img').forEach(img => {
+  document.querySelectorAll('.proj-demo img, .lead-photo').forEach(img => {
     img.addEventListener('click', () => openLightbox(img.src, img.alt));
   });
   document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
