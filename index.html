@@ -3,7 +3,11 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Luis Gonzalez</title>
+  <title>Luis Gonzalez — Software Engineer</title>
+  <meta name="description" content="Software engineer and Brooklyn College CS graduate. Building a full-stack procurement platform, an AI-assisted speed reading app, and other projects."/>
+  <meta property="og:title" content="Luis Gonzalez — Software Engineer"/>
+  <meta property="og:description" content="Software engineer and Brooklyn College CS graduate. Building a full-stack procurement platform, an AI-assisted speed reading app, and other projects."/>
+  <meta property="og:type" content="website"/>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Cormorant:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
@@ -403,6 +407,11 @@
     .d1{transition-delay:0.08s;} .d2{transition-delay:0.16s;}
     .d3{transition-delay:0.24s;} .d4{transition-delay:0.32s;}
 
+    @media (hover: none) {
+      body, .btn { cursor: auto; }
+      #cur, #cur-ring { display: none; }
+    }
+
     @media(max-width:768px){
       nav { padding: 1.2rem 1.5rem; flex-direction: column; align-items: flex-start; gap: 0.8rem; }
       .nav-links { gap: 1.2rem; flex-wrap: wrap; }
@@ -491,7 +500,7 @@
       <div class="about-right">
         <div class="about-text">
           <p class="reveal d1">I'm <strong>Luis Gonzalez</strong>, a software engineer and CS graduate of Brooklyn College with a B.S. in Computer Science.</p>
-          <p class="reveal d2">I've shipped data dashboards tracking $2.7B in ticket revenue, built an AI-powered speed reading PWA, and developed a 2D accessibility awareness game presented at CIS Day 2026. I also co-organized Brooklyn College's first in-person hackathon and am currently building an internal procurement management system at Design Implementation Group to replace a manual Excel-based workflow.</p>
+          <p class="reveal d2">I'm currently building a full-stack procurement platform at Design Implementation Group, replacing the company's Excel-based workflow end to end — pricing, ordering, and delivery tracking, with role-based access enforced at the database level. I've also shipped data dashboards tracking $2.7B in ticket revenue, built an AI-powered speed reading PWA, developed a 2D accessibility awareness game presented at CIS Day 2026, and co-organized Brooklyn College's first in-person hackathon.</p>
           <p class="reveal d3">I have a passion for algorithms, data structures, and building tools that are genuinely useful. Outside of code I love going to the gym, practicing MMA, and playing Street Fighter 6.</p>
         </div>
         <div class="about-meta reveal d2">
@@ -602,9 +611,10 @@
           <div class="exp-role">Software Engineer</div>
           <div class="exp-org">Design Implementation Group — Brooklyn, NY</div>
           <ul class="exp-bullets">
-            <li>Authored a Software Requirements Document and Technical Design Document for a full-stack internal procurement tool (Next.js, PostgreSQL/Supabase) to replace the company's Excel/Dropbox-based system, validating every requirement against real vendor quotes and material lists rather than assumptions.</li>
-            <li>Designed the data model and access-control architecture (Postgres Row-Level Security) for a system spanning pricing, purchasing, and delivery tracking across concurrent multi-state installation projects, including a shared-inventory model for tracking custom fabric allocation across furniture orders.</li>
-            <li>Coordinated day-to-day vendor ordering, shipment tracking, and warehouse delivery confirmation across concurrent multi-state installation projects, working with vendors including Poppin, Charter Furniture, Fairfield, Kellex, and Wayfair.</li>
+            <li>Building a full-stack web application (Next.js, TypeScript, PostgreSQL/Supabase, Vercel) with AI-assisted development to replace the company's Excel/Dropbox procurement workflow, authoring the Software Requirements and Technical Design documents and validating every requirement against real vendor quotes, proposals, and material lists.</li>
+            <li>Designed the back-end access model in PostgreSQL — Row-Level Security and column-level grants across three roles — so cost and pricing data is unreadable to restricted roles even through a direct API request, confirmed with crafted requests rather than trusting the interface alone.</li>
+            <li>Implemented the pricing engine (inline-markup and overhead-and-profit proposal modes, shared tax rate, per-order shipping and tariff, computed project margin) and reproduced totals from real company proposals to the cent, catching a rounding inconsistency in a source spreadsheet along the way.</li>
+            <li>Built multi-step workflows — order creation with PO-number generation, item replacement that swaps proposals — as single database transactions so partial states can't occur, and found and fixed a self-signup path that would have let an uninvited account into restricted data.</li>
           </ul>
         </div>
       </div>
