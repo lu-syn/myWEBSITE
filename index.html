@@ -516,7 +516,7 @@
       <div class="about-right">
         <div class="about-text">
           <p class="reveal d1">I'm <strong>Luis Gonzalez</strong>, a software engineer and CS graduate of Brooklyn College with a B.S. in Computer Science.</p>
-          <p class="reveal d2">I'm currently building a full-stack procurement platform at Design Implementation Group, replacing the company's Excel-based workflow end to end — pricing, ordering, and delivery tracking, with role-based access enforced at the database level. I've also shipped data dashboards tracking $2.7B in ticket revenue, built an AI-powered speed reading PWA, developed a 2D accessibility awareness game presented at CIS Day 2026, and co-organized Brooklyn College's first in-person hackathon.</p>
+          <p class="reveal d2">I'm currently building a full-stack procurement platform at Design Implementation Group, replacing the company's Excel-based workflow end to end: pricing, ordering, and delivery tracking, with a phone-first workflow for our outside warehouses and role-based access enforced at the database level. I've also shipped data dashboards tracking $2.7B in ticket revenue, built an AI-powered speed reading PWA, developed a 2D accessibility awareness game presented at CIS Day 2026, and co-organized Brooklyn College's first in-person hackathon.</p>
           <p class="reveal d3">I have a passion for algorithms, data structures, and building tools that are genuinely useful. Outside of code I love going to the gym, practicing MMA, and playing Street Fighter 6.</p>
         </div>
         <div class="about-meta reveal d2">
@@ -547,15 +547,16 @@
           <span class="proj-demo-label">Product Walkthrough</span>
         </div>
         <div class="proj-info">
-          <div class="proj-tag">Full-Stack Platform · In Development</div>
+          <div class="proj-tag">Full-Stack Platform · 5 of 7 Phases Complete</div>
           <div class="proj-card-name">DIG Procurement System</div>
-          <div class="proj-card-desc">A full-stack platform replacing a commercial interior design firm's Excel-based procurement workflow end to end — pricing, ordering, and delivery tracking, with role-based access enforced at the database level. Built with AI-assisted development; every requirement validated against real company documents rather than assumptions.</div>
+          <div class="proj-card-desc">A full-stack platform replacing a commercial interior design firm's Excel-based procurement workflow end to end: pricing, client proposals, ordering, and delivery tracking. Outside warehouses record deliveries from their phones, with photos, and each one sees only its own work, enforced in the database. Built with AI-assisted development; every requirement validated against real company documents, and 250+ database checks proven to fail when a rule breaks.</div>
           <div class="proj-pills">
             <span class="pill">Next.js</span>
             <span class="pill">TypeScript</span>
             <span class="pill">PostgreSQL</span>
             <span class="pill">Supabase</span>
             <span class="pill">Row-Level Security</span>
+            <span class="pill">Mutation Testing</span>
             <span class="pill">Vercel</span>
           </div>
           <span style="font-size:0.65rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--dim); align-self:flex-start;">Internal company tool — source private</span>
@@ -651,10 +652,11 @@
           <div class="exp-role">Software Engineer</div>
           <div class="exp-org">Design Implementation Group — Brooklyn, NY</div>
           <ul class="exp-bullets">
-            <li>Building a full-stack web application (Next.js, TypeScript, PostgreSQL/Supabase, Vercel) with AI-assisted development to replace the company's Excel/Dropbox procurement workflow, authoring the Software Requirements and Technical Design documents and validating every requirement against real vendor quotes, proposals, and material lists.</li>
-            <li>Designed the back-end access model in PostgreSQL — Row-Level Security and column-level grants across three roles — so cost and pricing data is unreadable to restricted roles even through a direct API request, confirmed with crafted requests rather than trusting the interface alone.</li>
-            <li>Implemented the pricing engine (inline-markup and overhead-and-profit proposal modes, shared tax rate, per-order shipping and tariff, computed project margin) and reproduced totals from real company proposals to the cent, catching a rounding inconsistency in a source spreadsheet along the way.</li>
-            <li>Built multi-step workflows — order creation with PO-number generation, item replacement that swaps proposals — as single database transactions so partial states can't occur, and found and fixed a self-signup path that would have let an uninvited account into restricted data.</li>
+            <li>Building a full-stack web application (Next.js, TypeScript, PostgreSQL/Supabase, Vercel) with AI-assisted development (Claude Code) to replace the company's Excel/Dropbox procurement workflow; authored the requirements, technical design, and a 79-entry decision log, validating requirements against real vendor quotes, proposals, and material lists.</li>
+            <li>Designed the access model in PostgreSQL (Row-Level Security, column-level grants, scoped views, Storage policies) so pricing stays hidden from restricted roles and each outside warehouse partner sees only its own deliveries, even through direct API requests; closed an error-message data leak with security-barrier views.</li>
+            <li>Wrote the design doc for receiving partial deliveries and returns, then delivered it as a phone-first warehouse workflow (quantity-based receipts, damage tracking, photo capture, return pickups), verified with a real warehouse sign-in on a phone.</li>
+            <li>Implemented the pricing engine (inline-markup and overhead-and-profit modes, shared tax rate, shipping, tariff, margin), reproducing real proposals to the cent; built multi-step workflows (order creation, receipts, item replacement that keeps the client's approved price) as single transactions.</li>
+            <li>Grew the database test suite from 91 to 253 checks, using mutation testing to prove each check can fail; found and fixed issues including an open self-signup path, magic links defeated by email link-scanning, and a test silently blind to null values.</li>
           </ul>
         </div>
       </div>
